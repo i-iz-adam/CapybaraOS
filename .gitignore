@@ -1,0 +1,11 @@
+# Local-only third-party reference images (see research/reference-images/INDEX.md)
+research/reference-images/*
+!research/reference-images/INDEX.md
+
+# Local state and generated output
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+target/
+node_modules/
+.DS_Store

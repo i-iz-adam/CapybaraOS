@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://www.pandaos.ai",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 2,
+      "url": "https://pandaos.ai/features/design",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 3,
+      "url": "https://pandaos.ai/features/multi-project",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 4,
+      "url": "https://pandaos.ai/features/automations",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 5,
+      "url": "https://pandaos.ai/features/hot-swap",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 6,
+      "url": "https://pandaos.ai/features/atlas",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 7,
+      "url": "https://pandaos.ai/apps",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 8,
+      "url": "https://pandaos.ai/pricing",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 9,
+      "url": "https://pandaos.ai/features/director",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 10,
+      "url": "https://pandaos.ai/use-cases",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 11,
+      "url": "https://pandaos.ai/enterprise",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 12,
+      "url": "https://pandaos.ai/business",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 13,
+      "url": "https://docs.pandaos.ai/docs",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 14,
+      "url": "https://docs.pandaos.ai/docs/chat/interface",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 15,
+      "url": "https://docs.pandaos.ai/docs/apps/connecting",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 16,
+      "url": "https://docs.pandaos.ai/docs/apps/database",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 17,
+      "url": "https://docs.pandaos.ai/docs/apps/mobile-access",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 18,
+      "url": "https://docs.pandaos.ai/docs/help/permissions",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 19,
+      "url": "https://docs.pandaos.ai/docs/help/execution-environment",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 20,
+      "url": "https://docs.pandaos.ai/docs/projects/templates",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 21,
+      "url": "https://docs.pandaos.ai/docs/getting-started/creating-a-project",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 22,
+      "url": "https://docs.pandaos.ai/docs/get-started/install",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 23,
+      "url": "https://docs.pandaos.ai/docs/help/connections",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 24,
+      "url": "https://docs.pandaos.ai/docs/help/models",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 25,
+      "url": "https://docs.pandaos.ai/docs/teach/hiring",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 26,
+      "url": "https://docs.pandaos.ai/docs/chat/plan-mode",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 27,
+      "url": "https://docs.pandaos.ai/docs/chat/progress",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 28,
+      "url": "https://docs.pandaos.ai/docs/projects/checking-edits",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 29,
+      "url": "https://docs.pandaos.ai/docs/chat/steering",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 30,
+      "url": "https://docs.pandaos.ai/docs/chat/voice",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 31,
+      "url": "https://www.pandata.de/career/full-stack-developer",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 32,
+      "url": "https://docs.pandaos.ai/docs/get-started/what-is-pandaos",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 33,
+      "url": "https://docs.pandaos.ai/docs/settings/overview",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 34,
+      "url": "https://docs.pandaos.ai/docs/help/general",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 35,
+      "url": "https://docs.pandaos.ai/docs/get-started/first-project",
+      "title": "",
+      "accessed": "2026-11-24"
+    },
+    {
+      "id": 36,
+      "url": "https://github.com/marushan49/pandaos",
+      "title": "",
+      "accessed": "2026-11-24"
+    }
+  ]
+}
