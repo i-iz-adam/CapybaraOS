@@ -94,3 +94,9 @@ Start where the pain is sharpest and the implementation is honest: **a fast, loc
 [19] https://docs.pandaos.ai/docs/help/execution-environment
 [23] https://docs.pandaos.ai/docs/help/connections
 [28] https://docs.pandaos.ai/docs/projects/checking-edits
+
+### Addition from design session 2 — Design direction
+
+- **Shell first.** Every surface is designed and built as a themed, keyboard-reachable shell before its feature logic exists (see `docs/design/README.md`, ADR 0005).
+- **Layout inspired, look our own.** The *pattern* — icon rail → project sidebar → side-by-side panes → composer — is shared with the reference product; palette, tokens, icons, copy and components are original (warm neutrals + moss-teal accent, generic glyphs).
+- **Light and dark are equal citizens**, plus a "mixed" option that pins terminal/editor surfaces dark inside a light app (`docs/design/01-principles-and-tokens.md`).

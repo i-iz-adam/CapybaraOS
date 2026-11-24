@@ -28,3 +28,23 @@ These images were downloaded from PandaOS's public website and public documentat
 | `24-mobile-pairing.png` | Mobile bridge QR pairing | https://yiynfbzujefrgxejlqfo.supabase.co/storage/v1/object/public/docs-media/mobile/overview.png |
 
 Total: 20 images, ~4.3 MB. Fetch script: `../fetch_images.py`.
+
+## Used by which design screen
+
+Added by design session 2. These are *layout and pattern* references only — never copy visuals. Screen IDs are defined in `docs/design/`.
+
+| Image | Informs |
+|---|---|
+| `01-interface-design.png` | S-01 frame, S-02 rail, S-03 sidebar, S-04 pane strip, S-05 chat, S-09 editor, S-10 files, S-22 design start |
+| `02-multi-project.webp` | S-03 project scope select, group chips, coloured project headings |
+| `03-agent-workflows.webp` | S-16 skills/agents rows, S-06 `/` command list |
+| `04-bypass-session-limits.webp` | S-05 limit/failover card, S-30 usage popover |
+| `05-project-memory.webp` | S-19 Atlas map |
+| `06-ai-native-dev-env.webp` | S-06 composer, S-11 terminal |
+| `07-connected-apps.webp` | S-16/S-17 app ecosystem, S-02 pinned apps |
+| `10`–`17` use-case images | S-05 card sequences, S-20 automations, S-21 Director (storytelling reference) |
+| `20-app-connections.png` | S-16 Customize hub, S-03 sidebar variant |
+| `21-app-per-tool.png` | S-17 Actions modal (Auto/Ask/Off) |
+| `22-model-connections.png` | S-23 settings shell and Models → Connections |
+| `23-chat-switch-engine.png` | S-07 model switcher |
+| `24-mobile-pairing.png` | S-23 Mobile access, S-28 pairing |

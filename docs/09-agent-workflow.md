@@ -15,6 +15,8 @@ Add a row to the table below, then edit only what you claimed. Remove your row w
 | `00-START-HERE.md` | research session 1 | initial | 2026-11-24 | done |
 | `docs/01`–`08` | research session 1 | initial | 2026-11-24 | done |
 | `research/source-notes.md` | research session 1 | initial | 2026-11-24 | done |
+| `docs/design/*`, `docs/11-windows-dev-setup.md`, `docs/handoff/*`, ADR 0004–0006 | design session 2 | design-1 | 2026-11-24 | done |
+| `00-START-HERE.md`, `README.md`, `CONTRIBUTING.md`, additions to `docs/01`, `02`, `04`, `05`, `08`, `09`, `10`, reference-image `INDEX.md` | design session 2 | design-1 | 2026-11-24 | done |
 | *(free)* | | | | |
 
 Rules:
@@ -85,6 +87,16 @@ One logical change per commit. Always run the relevant test before committing. N
 
 ---
 
+### 5a. Shell-phase rules (Phase S)
+
+1. Build screens in **tier order** (chrome → core → feature shells); do not start a Tier C screen while a Tier A/B screen is unbuilt.
+2. UI talks to data **only through `ShellPort`**; never import fixtures from a component.
+3. **Fixtures:** one module, ≤ 400 lines, smallest set that shows every state; no generators, mock servers or fake backends; never assert fixture content in tests (see `docs/design/README.md`).
+4. **Tokens only** — no raw colours/spacing/fonts outside `tokens.css`; both themes checked.
+5. **Timebox:** ship what meets the screen's definition of done, record gaps in the status table, move on. No polish beyond spec.
+6. **No capabilities:** the shell may not write files, run commands, spend or send.
+7. Update the **screen status table** in `docs/design/README.md` in the same PR as the screen.
+
 ## 6. Conflict resolution
 
 - **Doc conflict:** the later handoff wins only if it cites a source or a decision record; otherwise leave both readings with a `TODO(resolve)` note.
@@ -96,11 +108,9 @@ One logical change per commit. Always run the relevant test before committing. N
 
 ## 7. New session quick-start prompt
 
-Paste this as the first message of a new agent session:
+Paste this as the first message of a new agent session (the current, task-specific prompt is kept in `docs/handoff/`):
 
-> Read `00-START-HERE.md`, then `docs/01-vision.md`, `docs/02-target-features.md`, `docs/04-tech-stack.md`, `docs/07-security-and-permissions.md`, `docs/08-roadmap.md`, and this file. Claim the document or feature you will work on in the claims table. Do not touch any other file. Follow the commit convention. Leave a handoff block when done.
-
----
+> Read `00-START-HERE.md`, then `docs/01-vision.md`, `docs/design/README.md` and the design file(s) for your screens, `docs/04-tech-stack.md`, `docs/08-roadmap.md` (Phase S), ADRs 0004–0005, and this file. Claim the screens or document you will work on in the claims table. Follow the **fixtures policy** in `docs/design/README.md` — no extra mock data, no testing of fixtures. Do not touch any other file. Follow the commit convention. Leave a handoff block and update the screen status table when done.
 
 ## 8. Reviewer checklist
 

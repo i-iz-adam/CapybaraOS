@@ -1,0 +1,129 @@
+/* CapybaraOS design tokens — canonical values. See ../01-principles-and-tokens.md
+   Rules: components consume SEMANTIC tokens only. Plain hex / rgba only (no oklch, color-mix, @property). */
+
+:root {
+  color-scheme: light dark;
+
+  /* type */
+  --font-ui: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, "SF Pro Text", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: "Cascadia Mono", "SF Mono", Consolas, "JetBrains Mono", ui-monospace, monospace;
+  --fs-xs: 11px; --fs-sm: 12px; --fs-md: 13px; --fs-lg: 14px; --fs-xl: 16px; --fs-2xl: 20px; --fs-hero: 28px;
+  --chat-scale: 1;
+
+  /* space (4px grid) */
+  --sp-1: 2px; --sp-2: 4px; --sp-3: 8px; --sp-4: 12px; --sp-5: 16px; --sp-6: 24px; --sp-7: 32px; --sp-8: 48px;
+
+  /* shape */
+  --r-sm: 6px; --r-md: 10px; --r-lg: 14px; --r-xl: 20px; --r-pill: 999px;
+
+  /* motion */
+  --dur-fast: 80ms; --dur-base: 140ms; --dur-slow: 220ms; --ease: cubic-bezier(.2, 0, 0, 1);
+
+  /* z */
+  --z-pane: 1; --z-sticky: 10; --z-popover: 100; --z-dialog: 200; --z-toast: 300; --z-palette: 400;
+
+  /* layout */
+  --titlebar-h: 36px; --rail-w: 48px; --sidebar-w: 272px; --pane-header-h: 40px; --status-h: 24px; --gap: 6px;
+}
+
+/* ---------- LIGHT (default) ---------- */
+:root,
+:root[data-theme="light"] {
+  --bg-app: #F6F4F0;
+  --bg-rail: #EFEBE4;
+  --bg-sidebar: #F9F7F3;
+  --bg-surface: #FFFFFF;
+  --bg-surface-2: #F3F0EA;
+  --bg-hover: rgba(40, 32, 20, .05);
+  --bg-selected: #E3F0EB;
+  --border: #E3DED5;
+  --border-strong: #CFC8BB;
+  --text: #221E18;
+  --text-muted: #6B6458;
+  --text-faint: #9A9285;
+  --overlay: rgba(20, 16, 10, .40);
+
+  --accent: #2F7D68;
+  --accent-hover: #276A58;
+  --accent-fg: #FFFFFF;
+  --accent-tint: #E3F0EB;
+
+  --status-running: #3B7DD8;
+  --status-needs: #C98A12;
+  --status-done: #2E8B57;
+  --status-error: #C8443A;
+  --status-idle: #9A9285;
+
+  --diff-add-bg: #E4F4E8;
+  --diff-del-bg: #FBE7E4;
+
+  --perm-auto: var(--accent);
+  --perm-ask: var(--status-needs);
+  --perm-off: var(--text-faint);
+
+  --proj-1: #2F7D68; --proj-2: #2F6FB5; --proj-3: #7A52C7; --proj-4: #C0415F;
+  --proj-5: #B7791F; --proj-6: #1F8A8A; --proj-7: #5B6B7E; --proj-8: #A8603A;
+
+  --shadow-sm: 0 1px 2px rgba(40, 32, 20, .06), 0 1px 1px rgba(40, 32, 20, .04);
+  --shadow-md: 0 6px 20px rgba(40, 32, 20, .12), 0 1px 3px rgba(40, 32, 20, .08);
+  --shadow-lg: 0 18px 48px rgba(40, 32, 20, .18), 0 2px 6px rgba(40, 32, 20, .10);
+}
+
+/* ---------- DARK ---------- */
+:root[data-theme="dark"] {
+  --bg-app: #14130F;
+  --bg-rail: #1A1814;
+  --bg-sidebar: #1C1A16;
+  --bg-surface: #211F1A;
+  --bg-surface-2: #2A2721;
+  --bg-hover: rgba(255, 245, 230, .06);
+  --bg-selected: #1F3A32;
+  --border: #332F27;
+  --border-strong: #463F34;
+  --text: #ECE7DD;
+  --text-muted: #A89F90;
+  --text-faint: #766E61;
+  --overlay: rgba(0, 0, 0, .60);
+
+  --accent: #4FB79A;
+  --accent-hover: #66C7AC;
+  --accent-fg: #0E1A16;
+  --accent-tint: #1F3A32;
+
+  --status-running: #6AA5F0;
+  --status-needs: #E0A83A;
+  --status-done: #5CC48A;
+  --status-error: #EE7B70;
+  --status-idle: #766E61;
+
+  --diff-add-bg: #1C3324;
+  --diff-del-bg: #3A2020;
+
+  --proj-1: #4FB79A; --proj-2: #6AA5F0; --proj-3: #A58BE8; --proj-4: #EE7B98;
+  --proj-5: #E0A83A; --proj-6: #4FC3C3; --proj-7: #9AA9BC; --proj-8: #E09A6E;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .40);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, .50), 0 0 0 1px rgba(255, 245, 230, .04);
+  --shadow-lg: 0 20px 56px rgba(0, 0, 0, .60), 0 0 0 1px rgba(255, 245, 230, .05);
+}
+
+/* "Mix": pin a surface (terminal / editor) dark inside a light app */
+[data-surface="dark"] {
+  --bg-surface: #1B1915;
+  --bg-surface-2: #25221C;
+  --border: #332F27;
+  --text: #ECE7DD;
+  --text-muted: #A89F90;
+  --text-faint: #766E61;
+  --accent: #4FB79A;
+  --diff-add-bg: #1C3324;
+  --diff-del-bg: #3A2020;
+}
+
+/* Density */
+[data-density="compact"] { --gap: 4px; --pane-header-h: 36px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-base: 0ms; --dur-slow: 0ms; }
+}

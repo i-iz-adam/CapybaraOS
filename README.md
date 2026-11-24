@@ -4,7 +4,7 @@
 
 **CapybaraOS** is an open-source, local-first AI workstation for Windows, macOS and Linux. It brings projects, code, terminal, browser, connected apps, AI agents, automations and persistent memory into one fast desktop environment — with your keys, your data and full control over what the AI is allowed to do.
 
-> **Status: specification phase.** The research, product definition, architecture and roadmap are complete. No runnable build exists yet. Start with [`00-START-HERE.md`](00-START-HERE.md).
+> **Status: specification phase — shell designs specified.** Research, product definition, architecture, roadmap and the 30-screen shell design (light + dark) are complete. No runnable build exists yet; the **shell is built first** (Phase S), then features. Start with [`00-START-HERE.md`](00-START-HERE.md).
 
 ---
 
@@ -81,6 +81,7 @@ Hard budget, enforced in CI: **< 150 MB** core idle RAM, **< 120 MB** renderer R
 | Document | Contents |
 |---|---|
 | [`00-START-HERE.md`](00-START-HERE.md) | Orientation, working rules, current status |
+| [`design/`](docs/design/README.md) | **Shell-first design spec**: tokens (light/dark/mixed), 30 screens, components, accessibility, fixtures policy |
 | [`01-vision.md`](docs/01-vision.md) | Problem, thesis, principles, positioning, non-goals |
 | [`02-target-features.md`](docs/02-target-features.md) | 100+ features with IDs, priority and phase |
 | [`03-product-teardown.md`](docs/03-product-teardown.md) | Detailed findings from the reference product |
@@ -91,13 +92,14 @@ Hard budget, enforced in CI: **< 150 MB** core idle RAM, **< 120 MB** renderer R
 | [`08-roadmap.md`](docs/08-roadmap.md) | 11 phases with dependencies and exit criteria |
 | [`09-agent-workflow.md`](docs/09-agent-workflow.md) | Multi-agent collaboration contract |
 | [`10-glossary.md`](docs/10-glossary.md) | Shared vocabulary |
+| [`11-windows-dev-setup.md`](docs/11-windows-dev-setup.md) | Windows prerequisites and commands |
 | [`research/`](research/) | Cited source notes, ledger and 20 reference images |
 
 ---
 
 ## Roadmap
 
-Phases 0–2 (repo + CI, shell and projects, engines with permissions and review) come first on purpose: the expensive-to-retrofit parts are the event log, provider abstraction, permission gate and undo system. Autonomy is added only on top of a trustworthy core.
+**Phase S (shell)** comes first: every screen is built as real, themed UI from a small fixtures adapter, so features land in finished homes. Then phases 1–2 (wire the shell to the core; engines with permissions and review) follow on purpose: the expensive-to-retrofit parts are the event log, provider abstraction, permission gate and undo system. Autonomy is added only on top of a trustworthy core.
 
 See [`docs/08-roadmap.md`](docs/08-roadmap.md) for the full sequence, dependencies and exit criteria.
 

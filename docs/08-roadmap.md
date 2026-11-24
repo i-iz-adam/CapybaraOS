@@ -1,12 +1,14 @@
 # 08 — Roadmap & Build Order
 
-**Owner:** research session 1 · **Status:** proposed · **Depends on:** all of `01`–`07`
+**Owner:** research session 1 (revised by design session 2: Phase S added) · **Status:** proposed · **Depends on:** all of `01`–`07`
 
 ---
 
 ## 1. Why this order
 
 The strongest temptation in a project like this is to start with the impressive surface: the chat, the beautiful panels, the agent doing twelve things at once. That is exactly backwards. The expensive-to-retrofit parts are **the permission gate, the event log, the snapshot/undo system and the provider abstraction**. If agents can write files before those exist, every later feature inherits an unsafe default. So phases 1–2 are deliberately unglamorous: a working shell, a chat that streams, and safety around file changes. Autonomy is added only on top of that.
+
+Third principle (added): **shell first.** Every surface is designed and built as a real, themed UI from fixtures *before* its logic (Phase S, `docs/design/`, ADR 0005). The shell cannot write, run, spend or send, so this does not weaken the safety-first rule — it just gives features finished homes.
 
 Second principle: **each phase must end with something runnable and testable**. No phase ends in "architecture complete".
 
@@ -16,7 +18,10 @@ Second principle: **each phase must end with something runnable and testable**. 
 
 ```mermaid
 graph LR
-  P0[Phase 0<br/>Repo + CI + perf harness] --> P1[Phase 1<br/>Shell + projects + chat]
+  P0[Phase 0a<br/>Repo scaffold] --> PS[Phase S<br/>Shell designs built]
+  P0 --> P0b[Phase 0b<br/>CI + perf harness]
+  PS --> P1[Phase 1<br/>Wire shell: projects + chat]
+  P0b --> P1
   P1 --> P2[Phase 2<br/>Engines + permissions + review]
   P2 --> P3[Phase 3<br/>Tools + browser + terminal]
   P3 --> P4[Phase 4<br/>Apps + MCP + connectors]
@@ -36,20 +41,34 @@ graph LR
 ### Phase 0 — Foundations (1–2 weeks)
 
 **Goal:** a repo where agents can work safely and where performance is measurable.
+
+> **Split (design session 2):** **0a** = minimal scaffold (pnpm workspace, Vite + React + TS app, Tauri window, lint/format, `.gitattributes`) — needed immediately so Phase S can start. **0b** = CI matrix, `perf.yml`, remaining ADR/repo hygiene — runs in parallel with Phase S and must be green before Phase 1.
 - Monorepo scaffolding (pnpm + Cargo workspaces), LICENSE, CONTRIBUTING, codeowners, issue templates.
 - CI: build matrix (win/mac/linux), `cargo test`, Vitest, formatting/lint, Playwright smoke.
 - `perf.yml`: idle RAM/CPU, cold start, installer size budgets from `04-tech-stack.md`.
 - ADRs 0001–0003 (Tauri, SQLite, MCP).
 - **Exit:** CI green on all three OSes; perf harness reports numbers; ADRs merged.
 
-### Phase 1 — Shell, projects and chat (2–4 weeks)
+### Phase S — Shell designs, built (2–4 weeks, ~5 sessions)
 
-**Goal:** open the app, add a folder as a project, send a message, see streaming text.
-- Tauri window, tray, renderer shell, design tokens, keyboard navigation.
-- `cap-store` schema + migrations; `Project`, `Chat`, `Turn`, `Event`.
-- Project sidebar with many projects, status chips, tool-state retention model.
-- Embedded editor (read + simple edit), PTY terminal with `portable-pty`.
-- Chat UI with action cards, stop button, per-chat mode picker (UI only for now).
+**Goal:** every surface in `docs/design/` exists as a real, themed, keyboard-reachable UI driven by fixtures. No engines, no persistence, no real tools.
+- Tokens, light/dark/system + mixed surfaces; `ShellPort` + one fixtures adapter (ADR 0004, 0005).
+- **Tier A chrome:** frame, rail, sidebar, pane workbench, command palette, overlay system, settings frame (S-01–S-04, S-23 frame, S-24, S-25).
+- **Tier B core:** chat + full card catalogue, composer, model switcher, home, editor, files, terminal, browser, review, git, status surfaces (S-05–S-14, S-30).
+- **Tier C shells:** inbox, customize, apps, Atlas, automations, Director, design app, settings pages, onboarding (S-15–S-22, S-29).
+- Session breakdown and per-screen definition of done: `docs/design/README.md`.
+- **Rules:** fixtures capped and never tested; no feature logic; timebox per session; chrome → core → feature shells.
+- **Exit:** all Tier A+B screens built per the definition of done; Tier C reachable with empty + populated states; light/dark/mixed verified; renderer idle RSS < 120 MB and project switch < 150 ms measured on the shell; NVDA smoke pass on Home, Chat, Permissions and the Actions modal.
+
+### Phase 1 — Wire the shell: projects and chat (2–4 weeks)
+
+**Goal:** open the app, add a folder as a project, send a message, see streaming text — by replacing the fixtures adapter with the real core, **without editing components**.
+- Tauri tray and native frame wiring; tray-resident core process.
+- `cap-store` schema + migrations; `Project`, `Chat`, `Turn`, `Event`; Tauri `ShellPort` adapter (ADR 0005).
+- Persist workbench layout per chat; tool-state retention model (F-04); sidebar statuses from real events.
+- Real PTY terminal (`portable-pty`) and real file tree/editor read + simple edit behind the existing panes.
+- Chat streaming through the event log with a stub echo engine; stop button; mode picker stored (enforced in Phase 2).
+- Delete the fixtures each slice replaces, in the same PR.
 - **Exit:** 3 projects open simultaneously; terminal state survives switching; perf budget holds.
 
 ### Phase 2 — Engines, permissions and review (3–5 weeks) ⚠️ *most important*
@@ -124,11 +143,12 @@ graph LR
 1. Never start a phase whose dependencies are not `done` (see `00-START-HERE.md` status list).
 2. Within a phase, do **security and storage before UI** when both are present.
 3. A feature is not done until it has: tests, docs update, audit hooks, and a perf note.
-4. If a phase is too large, split by *vertical slice* (one connector end to end), not by layer ("all UI, then all backend").
-5. Prefer one excellent connector over ten stubs — the MCP boundary makes the rest cheap later.
+4. **Phase S precedes Phase 1.** Within Phase S build in tier order (chrome → core → feature shells). Never put feature logic in a shell session; never extend fixtures beyond the cap in `docs/design/README.md`.
+5. If a phase is too large, split by *vertical slice* (one connector end to end), not by layer ("all UI, then all backend").
+6. Prefer one excellent connector over ten stubs — the MCP boundary makes the rest cheap later.
 
 ---
 
 ## 5. What to build first if time is short
 
-**A single vertical slice:** project folder → chat → OpenAI-compatible engine → one file edit → approval card → diff in Review → Rewind → commit. That slice proves the whole thesis. Everything else is a variation on it.
+**Shell:** Tier A chrome plus S-05/S-06 (chat + composer) and S-13 (review) — enough to demonstrate the whole thesis visually. **Then a single vertical slice:** project folder → chat → OpenAI-compatible engine → one file edit → approval card → diff in Review → Rewind → commit. That slice proves the whole thesis. Everything else is a variation on it.

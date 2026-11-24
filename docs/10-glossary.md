@@ -43,3 +43,15 @@ Shared vocabulary. Use these terms exactly in code, UI and docs.
 | **Mobile bridge** | The encrypted local service that pairs a phone to the desktop app. |
 | **Token** | Both an AI model token (billing/context) and an auth secret. Use `auth token` for the latter in docs. |
 | **Perf budget** | The hard idle RAM/CPU/startup targets in `04-tech-stack.md`. |
+| **Shell** | The app's chrome and screens built before feature logic: frame, rail, sidebar, workbench, settings, overlays. |
+| **Surface** | A top-level screen chosen from the rail (Home, Chats, Customize, Atlas, Inbox, Automations, Director, Design, Settings). |
+| **Rail** | The 48 px icon strip for global navigation and pane toggles. |
+| **Workbench** | The area right of the sidebar that holds the pane strip. |
+| **Pane / Strip** | A tool panel (chat, editor, files, terminal, browser, review, git, app…) / the ordered horizontal list of panes. |
+| **Composer** | The message input with mode, model, context and usage controls. |
+| **Command palette** | `Ctrl+K` overlay that reaches every action, chat, file and setting. |
+| **Screen ID (`S-xx`)** | Stable identifier for a specified screen in `docs/design/`. |
+| **Tier (A–D)** | Build priority of a screen: Chrome, Core, Feature shell, Spec-only. |
+| **Fixture** | The minimal typed seed data behind the shell; one adapter, size-capped. |
+| **ShellPort** | The single interface through which UI reads state and sends intents; implemented by fixtures first, then by the Tauri core. |
+| **Mixed theme** | Light app with terminal/editor surfaces pinned dark (`data-surface="dark"`). |

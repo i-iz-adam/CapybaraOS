@@ -1,7 +1,7 @@
 # 04 — Tech Stack Decision
 
 **Owner:** research session 1 · **Status:** decision proposed · **Supersedes:** none  
-**Related ADRs to create:** `0001-tauri-over-electron`, `0002-sqlite-single-file-store`, `0003-mcp-as-extension-boundary`
+**Related ADRs:** `0001-tauri-over-electron`, `0002-sqlite-and-markdown-store`, `0003-mcp-extension-boundary`, `0004-plain-css-tokens-and-theming`, `0005-shell-first-and-shellport`, `0006-codemirror-6-for-editor`
 
 ---
 
@@ -44,7 +44,7 @@ Owns: filesystem, process supervision, PTY, scheduling, SQLite, indexing, sandbo
 
 ### Renderer: **TypeScript + React 19 + Vite 7 + TanStack Router/Query**
 
-Plain CSS with design tokens (or Tailwind 4 at build time — zero runtime cost). Radix UI primitives for accessible widgets. Lucide icons and system font stack to avoid font-loading cost. **No** component library that ships a runtime theme engine.
+Plain CSS with semantic design tokens (custom properties + CSS Modules) — **decided, ADR 0004**; Tailwind is not used. Editor: CodeMirror 6 (ADR 0006). Radix UI primitives for accessible widgets. Lucide icons and system font stack to avoid font-loading cost. **No** component library that ships a runtime theme engine.
 
 ### Persistence: **SQLite (single file per workspace)**
 
@@ -63,6 +63,7 @@ Three engine adapters — Claude Code, Codex, OpenCode — launched as supervise
 | Concern | Choice | Why |
 |---|---|---|
 | Terminal | `portable-pty` + xterm.js | True PTY, small, mature |
+| Editor / diff | CodeMirror 6 + `@codemirror/merge` | Small, low RAM, themeable by tokens (ADR 0006) |
 | Embedded browser | Native child webview, persistent data store; optional CEF engine | State retention, low memory |
 | HTTP / WebSocket | `reqwest`, `tokio-tungstenite` | Standard, async |
 | Scheduler | `tokio-cron-scheduler` + tray service | Cron + event triggers, no window needed |

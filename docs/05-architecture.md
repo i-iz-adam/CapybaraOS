@@ -187,3 +187,25 @@ Global pages live in `~/.capybaraos/memory/global/` and are visible to every pro
 
 [4] https://pandaos.ai/features/automations
 [6] https://pandaos.ai/features/atlas
+
+---
+
+## 9. Renderer shell architecture (added by design session 2)
+
+```
+apps/desktop/src/
+├── shell/
+│   ├── frame/        AppFrame, Titlebar, Rail, Sidebar, StatusBar      (S-01–S-03)
+│   ├── workbench/    PaneStrip, Pane, layout model                      (S-04)
+│   ├── surfaces/     chat/ editor/ files/ terminal/ browser/ review/ git/
+│   │                 inbox/ customize/ apps/ atlas/ automations/ director/ design/ settings/
+│   ├── overlays/     palette, dialogs, toasts, banners
+│   ├── ports/        ShellPort interface  ← the ONLY way UI reads state or sends intents
+│   └── fixtures/     fixtures adapter (Phase S only, ≤ 400 lines)
+└── (Phase 1+) adapters/tauri/   real adapter; replaces fixtures with no component edits
+```
+
+- **Single seam:** components depend on `ShellPort` (state projections + intent methods). The fixtures adapter and the Tauri adapter implement it. See ADR 0005.
+- **Layout model:** the workbench strip (pane list, widths, open tabs, focus) is plain serialisable state owned by the core in Phase 1 (per chat, F-04); in Phase S it lives in renderer memory.
+- **Native webview constraint:** the Browser pane is a native child webview above the DOM; every overlay publishes `onOverlayChange` so the pane can swap to a snapshot (see `docs/design/02-frame-and-layout.md` S-04).
+- **Surface loading:** Tier C surfaces and heavy engines (CodeMirror, xterm, Atlas map) are dynamic imports so cold start stays under budget.

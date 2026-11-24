@@ -15,13 +15,15 @@ Thanks for helping build an open, local-first AI workstation. This project is in
 - **Cross-platform testing** — Windows, macOS and especially WebKitGTK on Linux
 - **Performance work** against the budget in `docs/04-tech-stack.md`
 - **Security review** of the permission gate and sandbox design
+- **Shell screens** — building the specified screens in `docs/design/` (light + dark, keyboard-reachable) from fixtures
 - **Design** of a fast, calm interface that is our own, not a copy
 
 ## Development rules
 
 - Safety before autonomy: no write/send/spend/deploy capability ships without its permission gate and audit hook.
 - One logical change per commit, conventional prefix (`docs:`, `feat:`, `fix:`, `test:`, `perf:`, `chore:`).
-- Tests for every feature; a Playwright path for every user-visible change.
+- Tests for every feature; a Playwright path for every user-visible change. **Never test fixture/mock content** — test regions, interaction, keyboard and themes.
+- UI uses design tokens only and works in light and dark (`docs/design/`). Data comes only through `ShellPort`; keep fixtures within the cap in `docs/design/README.md`.
 - State the idle CPU/RAM impact of any new background work in your PR.
 - No proprietary assets, logos or screenshots from the reference product in the product itself.
 

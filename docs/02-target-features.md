@@ -177,6 +177,25 @@ Phase numbers refer to [`08-roadmap.md`](08-roadmap.md).
 
 ---
 
+## N. Shell & design system (added by design session 2)
+
+Screen-level specs live in `docs/design/` (IDs `S-xx`). Phase **S** is defined in [`08-roadmap.md`](08-roadmap.md).
+
+| ID | Feature | Priority | Phase |
+|---|---|---|---|
+| F-101 | Design tokens; light / dark / system themes; mixed (pinned-dark) surfaces | P0 | S |
+| F-102 | App frame: custom titlebar, panel layout, optional status bar | P0 | S |
+| F-103 | Icon rail with badges, pane toggles and pinned apps | P0 | S |
+| F-104 | Pane workbench: strip, resize, overflow, focus mode, layout model per chat | P0 | S |
+| F-105 | Command palette with scoped prefixes | P0 | S |
+| F-106 | Settings shell with every page frame (Appearance functional from day one) | P0 | S |
+| F-107 | Overlay system: dialogs, toasts, banners, tooltips, menus | P0 | S |
+| F-108 | First-run onboarding | P1 | S |
+| F-109 | Shortcut registry and rebinding UI | P1 | S |
+| F-110 | Accessibility baseline (focus, roles, contrast checks, NVDA pass) | P0 | S |
+| F-111 | Dev perf overlay (renderer heap, core RSS, idle CPU, switch time) | P1 | S |
+| F-112 | Feature-surface shells (Tier C) reachable with empty + populated states | P1 | S |
+
 ## Cross-cutting requirements
 
 These apply to every feature above, not just one row:
