@@ -2,6 +2,8 @@
 
 These images were downloaded from PandaOS's public website and public documentation CDN for **private design reference only**. Do not ship them in CapybaraOS, do not redistribute them, and do not use PandaOS trademarks or copy in our UI.
 
+**Never commit these files.** They are excluded by `../../.gitignore`; only this INDEX.md is tracked. Committing third-party assets distributes them, and deleting them in a later commit does not erase them from history.
+
 | File | Shows | Original URL |
 |---|---|---|
 | `01-interface-design.png` | Main workstation interface / layout | https://pandaos.ai/img/homepage/features/interface-design.png |
